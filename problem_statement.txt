@@ -1,0 +1,10 @@
+Digital Identity Solutions for Secure and Sustainable Banking 
+Track: "Digital Identity Assurance"
+Challenge: Develop a self-sovereign digital identity solution that empowers customers to have more control over their personal data and identity verification processes within the banking ecosystem.
+
+Considerations: (some ideas that can be used by participants)
+Creating a decentralized identity system using blockchain or similar technology. 
+Allowing users to selectively share personal information with different banking services or entities.
+Ensuring compliance with regulations while enabling user-controlled identity verification.
+For Instance:
+Conventional IAM solutions, particularly those dependent on usernames/passwords, are vulnerable to hacking, phishing, and various identity theft techniques. Commonly employed remedies include MFA and biometrics for login and transaction security to mitigate certain breaches. In addition to these measures, are there contemporary techniques we can explore, such as leveraging self-sovereign identity, to enhance security further?
