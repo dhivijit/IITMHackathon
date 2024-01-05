@@ -4,8 +4,6 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const path = require('path')
-// import the test function from the cb js file
-// const cb = require('./cb.js')
 const crypto = require('crypto')
 const fs = require('fs')
 require('dotenv').config()

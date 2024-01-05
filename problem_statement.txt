@@ -1,6 +1,7 @@
 Digital Identity Solutions for Secure and Sustainable Banking 
 Track: "Digital Identity Assurance"
-Challenge: Develop a self-sovereign digital identity solution that empowers customers to have more control over their personal data and identity verification processes within the banking ecosystem.
+Challenge: Develop a self-sovereign digital identity solution that empowers customers to have 
+more control over their personal data and identity verification processes within the banking ecosystem.
 
 Considerations: (some ideas that can be used by participants)
 Creating a decentralized identity system using blockchain or similar technology. 
