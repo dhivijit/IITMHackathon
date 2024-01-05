@@ -28,6 +28,6 @@ The main app is stored in app.js.
 # Contributors
 ## Amrita Vishwa Vidyapeetham(4th Sem CYS)
 ### Dhivijit Koppuravuri
-### Mokshagna Bhuvan Choudhary
+### Mokshagna Bhuvan Chowdary
 ### Sugali Sai Yuvaraj Naik
 ### Yash Yashuday
