@@ -27,7 +27,7 @@ The main app is stored in app.js.
 
 # Contributors
 ## Amrita Vishwa Vidyapeetham(4th Sem CYS)
-### Dhivijit Koppuravori
+### Dhivijit Koppuravuri
 ### Mokshagna Bhuvan Choudhary
 ### Sugali Sai Yuvaraj Naik
 ### Yash Yashuday
