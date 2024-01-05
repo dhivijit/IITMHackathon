@@ -29,6 +29,14 @@ app.get('/', function (req, res) {
   cb.test()
 })
 
+app.post("/signup",(req, res)=> {
+  const { username, password } = req.body
+  res.send(`Username: ${username} Password: ${password}`)
+  cred = username + "!|,$@(~()%?" + password
+  credhashed = calculateSHA256Hash(cred)
+  console.log(credhashed)
+})
+
 app.post("/login", (req, res) => {
   const { username, password } = req.body
   res.send(`Username: ${username} Password: ${password}`)
