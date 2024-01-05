@@ -56,7 +56,7 @@ app.route("/signup").get(function (req, res) {
   var personDatastring = JSON.stringify(personData)
   // AES encryption
 
-  var encryptedData = aes256.encrypt(ENC_KEY, personDatastring);
+  var encryptedData = aes256.encrypt(ENC_KEY + "" + password, personDatastring);
 
   console.log('Encrypted Data:', encryptedData);
 
@@ -84,7 +84,7 @@ app.route("/login").get(function (req, res) {
   var credhashed = calculateSHA256Hash(password)
   if (data[username] && data[username].pass === credhashed) {
     console.log("Login Successful")
-    var decryptedData = aes256.decrypt(ENC_KEY, data[username].encryptedData);
+    var decryptedData = aes256.decrypt(ENC_KEY + "" + password, data[username].encryptedData);
     console.log('Decrypted Data:', decryptedData);
     res.send(`Login Successful`)
   } else {
