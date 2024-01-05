@@ -9,18 +9,23 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ethersphere/bee-js": "^6.4.0",
     "@openzeppelin/contracts": "^5.0.1",
     "aes256": "^1.1.0",
-    "alchemy-sdk": "^3.1.0",
+    "axios": "^1.6.4",
+    "dat-sdk": "^2.8.1",
     "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "ethers": "^6.9.2",
     "express": "^4.18.2",
+    "fabric-network": "^2.2.20",
+    "fs": "^0.0.1-security",
     "ganache-cli": "^6.12.2",
-    "nodemailer": "^6.9.8",
+    "gun": "^0.2020.1239",
+    "hyper-sdk": "^4.5.0",
     "nodemon": "^3.0.2",
-    "smtp-server": "^3.13.0",
+    "request": "^2.88.2",
+    "type": "module",
     "web3": "^4.3.0"
-  },
-  "devDependencies": {
-    "hardhat": "^2.19.4"
   }
 }

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NBI</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            /* Added black background color */
+        }
+
+        .container {
+            position: static;
+            bottom: 50%;
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+
+        /* BEGIN: Modified font style */
+        body {
+            font-style: italic;
+            color: white;
+        }
+
+        /* END: Modified font style */
+    </style>
+</head>
+
+<body><br><br><br><br><br><br><br>
+    <div class="container">
+        <h2>NBI ONLINE SERVICES</h2>
+        <form action="<%=target%>" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+            <button id="submitBtn">Submit</button>
+
+            <div id="error" class="error">
+                <%= errormessage %>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const submitBtn = document.getElementById('submitBtn');
+        const errorDiv = document.getElementById('error');
+
+        submitBtn.addEventListener('click', function () {
+            errorDiv.textContent = '';
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === '' || password === '') {
+                errorDiv.textContent = 'All fields are required.';
+                return;
+            }
+
+            // Process data (e.g., send to a server)
+            console.log('Username:', username);
+            console.log('Password:', password);
+
+            // Get the location when the user clicks on login
+            const location = window.location.href;
+            console.log('Location:', location);
+        });
+
+        function validatePassword(password) {
+            return password.length >= 8;
+        }
+    </script>
+</body>
+
+</html>

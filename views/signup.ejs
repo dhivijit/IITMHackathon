@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NBI</title>
+    <style>
+        /* CSS styles */
+        .container {
+            position: static;
+            bottom:50%;
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-style: italic;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* BEGIN: Neon Red Font */
+        form {
+            color: neonred;
+        }
+
+        /* END: Neon Red Font */
+    </style>
+</head>
+
+<body>
+    <h1>NBI ONLINE SERVICES</h1>
+    <h1>Open a ZERO BALANCE Account NOW !!!</h1>
+    <h1>India's most trustable bank</h1>
+    <div class="container">
+        <form id="signup-form" action="/signup" method="post">
+            <label for="fullname">Name:</label>
+            <input type="text" id="fullname" name="name" required aria-required="true">
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required aria-required="true">
+
+            <label for="pan">PAN Number:</label>
+            <input type="text" id="pandetails" name="pan" required aria-required="true">
+
+            <label for="mail">Mail Address:</label>
+            <input type="email" id="email" name="email" required aria-required="true">
+        
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" name="mobile">
+
+            <label for="DOB">Date of Birth:</label>
+            <input type="date" id="DOB" name="DOB"><br><br>
+
+            <label for="Address">Address:</label>
+            <input type="text" id="Address" name="Address"><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required aria-required="true">
+
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required aria-required="true">
+
+            <button type="submit" onclick="signup(event)">Sign Up</button>
+        </form>
+    </div>
+    <script>
+        // JS code
+        function signup(event) {
+            event.preventDefault(); // Prevent form submission
+
+            var fullname = document.getElementById("fullname").value;
+            var username = document.getElementById("username").value;
+            var pan = document.getElementById("pandetails").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm-password").value;
+
+            // Perform signup validation and submission logic here
+
+            if (fullname === "") {
+                alert("Full name is required");
+                return;
+            }
+            if (!isValidPAN(pan)) {
+                alert("Invalid PAN number");
+                return;
+            }
+            //validate email address
+            if (!isValidEmail(email)) {
+                alert("Invalid email address");
+                return;
+            }
+
+            
+            // Example validation: Check if PAN number is valid
+
+            // Example validation: Check if password is empty
+            if (password === "") {
+                alert("Password is required");
+                return;
+            }
+
+            // Example validation: Check if confirm password matches
+            if (password !== confirmPassword) {
+                alert("Passwords do not match");
+                return;
+            }
+            // submit form
+            document.getElementById("signup-form").submit();
+        }
+
+        function isValidPAN(pan) {
+            // PAN number must be 10 characters long
+            if (pan.length !== 10) {
+                return false;
+            }
+
+            // PAN number must be alphanumeric
+            var regex = /^[a-zA-Z0-9]+$/;
+            if (!regex.test(pan)) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function isValidEmail(email) {
+            // Email must be in the format: <username>@<domain>
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regex.test(email)) {
+                return false;
+            }
+
+            return true;
+        }
+
+    </script>
+</body>
+
+</html>

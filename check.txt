@@ -1,0 +1,6 @@
+# Replace "/path/to/config" with the path to your Perkeep configuration file
+perkeepd -config = /path/to/config
+
+# Replace "/path/to/config" with the path to your Perkeep configuration file
+# Replace "data.json" with the name of your JSON file
+camput blob -in=data.json -camliconfig=/path/to/config

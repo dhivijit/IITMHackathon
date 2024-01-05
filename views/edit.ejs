@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        /* Updated CSS styles */
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-style: italic;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            color: neonred;
+            /* Apply Neon Red Font to the form */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Add your dashboard styles here */
+        /* ... */
+    </style>
+</head>
+
+<body>
+    <h1>NODE BANK OF INDIA [NBI]</h1>
+    <h2>User Dashboard</h2>
+
+    <div id="edit-details">
+        <h2>Edit Details</h2>
+        <form id="edit-form" action="/edited" method="post">
+            <label for="edit_fullname">Full Name:</label>
+            <input type="text" id="edit_fullname" name="edit_fullname">
+
+            <label for="edit_dob">Date of Birth:</label>
+            <input type="date" id="edit_dob" name="edit_dob">
+
+            <label for="edit_email">Email:</label>
+            <input type="email" id="edit_email" name="edit_email">
+
+            <label for="edit_address">Address:</label>
+            <input type="text" id="edit_address" name="edit_address">
+
+            <label for="edit_pan">PAN Number:</label>
+            <input type="text" id="edit_pan" name="edit_pan">
+
+            <label for="edit_address">Address:</label>
+            <input type="text" id="edit_address" name="edit_address">
+
+            <label for="edit_mobile">Mobile Number:</label>
+            <input type="text" id="edit_mobile" name="edit_mobile">
+
+            <label for="edit_password">Password:</label>
+            <input type="password" id="edit_password" name="edit_password">
+
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+</body>
+
+</html>
