@@ -1,11 +1,18 @@
+'use strict';
+
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const path = require('path')
 // import the test function from the cb js file
-const cb = require('./cb.js')
+// const cb = require('./cb.js')
 const crypto = require('crypto')
+const fs = require('fs')
 require('dotenv').config()
+var aes256 = require('aes256');
+
+var data = fs.readFileSync(__dirname + '/data.json')
+data = JSON.parse(data)
 
 function calculateSHA256Hash(inputString) {
   // Create a SHA-256 hash object
@@ -20,55 +27,70 @@ function calculateSHA256Hash(inputString) {
   return hashedString;
 }
 
+const ENC_KEY = process.env.secret
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
 const port = process.env.PORT || 3000
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/main.html')
+  res.send('Hello World')
 })
 
-app.get("/signup", (req, res) => {
+app.route("/signup").get(function (req, res) {
   res.sendFile(__dirname + '/signup.html')
-})
-
-app.post("/signup", (req, res) => {
+}).post(function (req, res) {
   const { username, pandetails, Email_add, password, phoneNumber = '', DOB = '', Address = '' } = req.body
   res.send(`Username: ${username} Password: ${password} Email: ${Email_add} Phone Number: ${phoneNumber} DOB: ${DOB} Address: ${Address}`)
-  var personData={
+  var personData = {
     "username": username,
     "pandetails": pandetails,
     "Email_add": Email_add,
-    "password": password,
     "phoneNumber": phoneNumber,
     "DOB": DOB,
     "Address": Address
   }
-  personDatastring = JSON.stringify(personData)
+  var data = fs.readFileSync(__dirname + '/data.json')
+  data = JSON.parse(data)
+  var personDatastring = JSON.stringify(personData)
   // AES encryption
-  const algorithm = 'aes-256-cbc';
-  const key = process.env.secret;
-  const iv = Buffer.from(crypto.randomBytes(16),"hex");
 
-  const cipher = crypto.createCipheriv(algorithm, key, iv);
-  let encryptedData = cipher.update(personDatastring, 'utf8', 'hex');
-  encryptedData += cipher.final('hex');
+  var encryptedData = aes256.encrypt(ENC_KEY, personDatastring);
 
   console.log('Encrypted Data:', encryptedData);
 
-  cred = username + "!|,$@(~()%?" + password
-  credhashed = calculateSHA256Hash(cred)
-  ivhex=iv.toString('hex')
+  var credhashed = calculateSHA256Hash(password)
+
+  data[username] = {
+    "pass": credhashed,
+    "encryptedData": encryptedData
+  };
+
+  console.log(data)
+
+  data = JSON.stringify(data)
+  fs.writeFileSync(__dirname + '/data.json', data)
   // console.log(credhashed)
 })
 
-app.post("/login", (req, res) => {
+
+app.route("/login").get(function (req, res) {
+  res.sendFile(__dirname + '/login.html')
+}).post(function (req, res) {
   const { username, password } = req.body
-  res.send(`Username: ${username} Password: ${password}`)
-  cred = username + "!|,$@(~()%?" + password
-  credhashed = calculateSHA256Hash(cred)
-  console.log(credhashed)
+  var data = fs.readFileSync(__dirname + '/data.json')
+  data = JSON.parse(data)
+  var credhashed = calculateSHA256Hash(password)
+  if (data[username] && data[username].pass === credhashed) {
+    console.log("Login Successful")
+    var decryptedData = aes256.decrypt(ENC_KEY, data[username].encryptedData);
+    console.log('Decrypted Data:', decryptedData);
+    res.send(`Login Successful`)
+  } else {
+    console.log("Login Failed")
+    res.send(`Login Failed`)
+  }
 })
 
 app.listen(port, () => {
