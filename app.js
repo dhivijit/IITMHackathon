@@ -2,6 +2,7 @@
 
 const express = require('express')
 const app = express()
+app.disable('x-powered-by');
 const bodyParser = require('body-parser')
 const path = require('path')
 const crypto = require('crypto')
