@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@ethersphere/bee-js": "^6.4.0",
-    "@openzeppelin/contracts": "^5.0.1",
+    "@openzeppelin/contracts": "^5.0.2",
     "aes256": "^1.1.0",
     "axios": "^1.6.4",
     "dat-sdk": "^2.8.1",
